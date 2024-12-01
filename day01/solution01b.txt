@@ -1,0 +1,1 @@
+paste <(awk '{print $1}' input) <(awk '{print $2}' input | sort -n) | awk 'BEGIN { while (getline) { counts[$2] += 1 ; nums[$1] += 1 } } END { sum = 0; for (num in nums) { if (num in counts) sum += num*counts[num]*nums[num] } print sum }'

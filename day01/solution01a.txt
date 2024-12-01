@@ -1,0 +1,1 @@
+paste <(awk '{print $1}' input | sort -n) <(awk '{print $2}' input | sort -n) | awk '{ a = strtonum($1); b = strtonum($2) ; if(b>a) sum += b - a ; else sum += a - b; print $1 " " $2 " " sum } ENDFILE { print sum }'
