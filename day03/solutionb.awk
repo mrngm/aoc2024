@@ -1,0 +1,1 @@
+BEGIN { FS=","; enabled=1; } { if ($1 ~ /do\(\)/) { enabled=1; next }; if ($1 ~ /don't\(\)/) { enabled=0; next }; if (enabled == 0) { next }; gsub("[mul)(]", ""); print $1 "*" $2 "=" $1*$2; sum += $1*$2 } END { print sum }
